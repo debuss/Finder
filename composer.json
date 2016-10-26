@@ -1,0 +1,15 @@
+{
+  "name": "debuss-a/finder",
+  "description": "This Finder class finds files and directories via a set of rules, the same way as the Finder Component from Symfony but in a much simpler implementation.",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexandre Debusschere",
+      "email": "alexandre@debuss-a.me"
+    }
+  ],
+  "require": {
+    "php": "^5.5"
+  }
+}
