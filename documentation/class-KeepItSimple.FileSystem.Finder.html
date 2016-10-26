@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class KeepItSimple\FileSystem\Finder</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-KeepItSimple.html">
+						KeepItSimple<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-KeepItSimple.FileSystem.html">
+						FileSystem					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-KeepItSimple.FileSystem.Finder.html">Finder</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-KeepItSimple.FileSystem.html" title="Summary of KeepItSimple\FileSystem"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Finder</h1>
+
+
+	<div class="description">
+	<p>Finder finds files and directories via a set of rules.
+It is a thin wrapper around several specialized iterator classes.
+All rules may be invoked several times.
+All methods return the current Finder object to allow easy chaining:</p>
+
+<pre><span class="php-var">$finder</span> = Finder::create()-&gt;files()-&gt;name(<span class="php-quote">'*.php'</span>)-&gt;in(__DIR__);</pre>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>KeepItSimple\FileSystem\Finder</span></b>			
+			 implements 
+<span>IteratorAggregate</span>, 
+			
+<span>Countable</span>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-KeepItSimple.html">KeepItSimple</a>\<a href="namespace-KeepItSimple.FileSystem.html">FileSystem</a><br>
+		<b>Package:</b> KeepItSimple\FileSystem\Finder<br>
+
+				<b>Author:</b>
+				Alexandre Debusschere (debuss-a)<br>
+				<b>Implements:</b>
+				IteratorAggregate<br>
+				<b>Implements:</b>
+				Countable<br>
+			<b>Located at</b> <a href="source-class-KeepItSimple.FileSystem.Finder.html#28-550" title="Go to source code">Finder.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#64-71" title="Go to source code">__construct</a>( )</code>
+
+		<div class="description short">
+			<p>Finder constructor.
+No parameters needed.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Finder constructor.
+No parameters needed.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="create" id="_create">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_create">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#73-82" title="Go to source code">create</a>( )</code>
+
+		<div class="description short">
+			<p>Create a Finder instance and returns it.
+Equivalent to :</p>
+
+<pre><span class="php-var">$finder</span> = (<span class="php-keyword1">new</span> Finder())-&gt;in(__DIR__);</pre>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a Finder instance and returns it.
+Equivalent to :</p>
+
+<pre><span class="php-var">$finder</span> = (<span class="php-keyword1">new</span> Finder())-&gt;in(__DIR__);</pre>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="files" id="_files">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_files">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#84-94" title="Go to source code">files</a>( )</code>
+
+		<div class="description short">
+			<p>Restricts the matching to files only.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Restricts the matching to files only.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="directories" id="_directories">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_directories">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#96-106" title="Go to source code">directories</a>( )</code>
+
+		<div class="description short">
+			<p>Restricts the matching to directories only.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Restricts the matching to directories only.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="in" id="_in">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_in">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#108-133" title="Go to source code">in</a>( <span>string|array <var>$directories</var></span> )</code>
+
+		<div class="description short">
+			<p>Searches files and/or directories in the given path(s).</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Searches files and/or directories in the given path(s).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$directories</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						CallbackFilterIterator To comply with Finder::files() and Finder::Directories().<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="exclude" id="_exclude">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_exclude">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#135-146" title="Go to source code">exclude</a>( <span> <var>$directories</var></span> )</code>
+
+		<div class="description short">
+			<p>Searches files and/or directories except in the given path(s).</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Searches files and/or directories except in the given path(s).</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$directories</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ignoreUnreadableDirs" id="_ignoreUnreadableDirs">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ignoreUnreadableDirs">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#148-159" title="Go to source code">ignoreUnreadableDirs</a>( <span>boolean <var>$yes</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>Tells Finder to ignore (or not) unreadable directories.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Tells Finder to ignore (or not) unreadable directories.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$yes</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ignoreDots" id="_ignoreDots">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ignoreDots">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#161-178" title="Go to source code">ignoreDots</a>( <span>boolean <var>$yes</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>Tells Finder to ignore (or not) dot directories.
+Will remove current directory and parent directory ("." and "..") as well as file starting with ".".</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Tells Finder to ignore (or not) dot directories.
+Will remove current directory and parent directory ("." and "..") as well as file starting with ".".</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$yes</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						FilesystemIterator::SKIP_DOTS<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ignoreVCS" id="_ignoreVCS">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ignoreVCS">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#180-191" title="Go to source code">ignoreVCS</a>( <span>boolean <var>$yes</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>Tells Finder to ignore (or not) VCS files.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Tells Finder to ignore (or not) VCS files.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$yes</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="followLinks" id="_followLinks">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_followLinks">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#193-201" title="Go to source code">followLinks</a>( )</code>
+
+		<div class="description short">
+			<p>Tells Finder to follow (or not) symbolic links.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Tells Finder to follow (or not) symbolic links.</p>
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						FilesystemIterator::FOLLOW_SYMLINKS<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sort" id="_sort">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sort">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#203-217" title="Go to source code">sort</a>( <span>callable <var>$callback</var></span> )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories from a user defined function.
+The anonymous function receives two \SplFileInfo instances to compare.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories from a user defined function.
+The anonymous function receives two \SplFileInfo instances to compare.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callback</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						ArrayIterator::uasort()<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByName" id="_sortByName">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByName">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#219-230" title="Go to source code">sortByName</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by name.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by name.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByType" id="_sortByType">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByType">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#232-243" title="Go to source code">sortByType</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by type.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by type.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortBySize" id="_sortBySize">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortBySize">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#245-256" title="Go to source code">sortBySize</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by size.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by size.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByExtension" id="_sortByExtension">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByExtension">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#258-269" title="Go to source code">sortByExtension</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by file extension.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by file extension.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByPath" id="_sortByPath">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByPath">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#271-282" title="Go to source code">sortByPath</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by path (without file name).
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by path (without file name).
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByPermission" id="_sortByPermission">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByPermission">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#284-295" title="Go to source code">sortByPermission</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by permissions.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by permissions.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByAccessedTime" id="_sortByAccessedTime">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByAccessedTime">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#297-308" title="Go to source code">sortByAccessedTime</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by accessed time.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by accessed time.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByModifiedTime" id="_sortByModifiedTime">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByModifiedTime">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#310-321" title="Go to source code">sortByModifiedTime</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by modified time.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by modified time.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sortByChangedTime" id="_sortByChangedTime">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sortByChangedTime">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#323-334" title="Go to source code">sortByChangedTime</a>( )</code>
+
+		<div class="description short">
+			<p>Sorts files and directories by changed time.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sorts files and directories by changed time.
+This can be slow as all the matching files and directories must be retrieved for comparison.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="filter" id="_filter">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_filter">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#336-348" title="Go to source code">filter</a>( <span>callable <var>$callback</var></span> )</code>
+
+		<div class="description short">
+			<p>Filters the iterator with a user defined function.
+The anonymous function receives a SplFileInfo and must return false to remove files.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Filters the iterator with a user defined function.
+The anonymous function receives a SplFileInfo and must return false to remove files.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callback</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="name" id="_name">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_name">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#350-390" title="Go to source code">name</a>( <span>string <var>$name</var></span>, <span>boolean <var>$positive</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>Adds rules that files must match.
+You can use patterns regex, globs or simple strings.
+Example :</p>
+
+<pre><span class="php-var">$finder</span>-&gt;name(<span class="php-quote">'*.php'</span>)</pre>
+
+<p>will produce same result as</p>
+
+<pre><span class="php-var">$finder</span>-&gt;name(<span class="php-quote">'/.php$/'</span>)</pre>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds rules that files must match.
+You can use patterns regex, globs or simple strings.
+Example :</p>
+
+<pre><span class="php-var">$finder</span>-&gt;name(<span class="php-quote">'*.php'</span>)</pre>
+
+<p>will produce same result as</p>
+
+<pre><span class="php-var">$finder</span>-&gt;name(<span class="php-quote">'/.php$/'</span>)</pre>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd></dd>
+					<dt><var>$positive</var></dt>
+					<dd>Default true and proceed as you expect. Set to false to add a rule that <u>does not</u> match.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="contains" id="_contains">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_contains">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#392-430" title="Go to source code">contains</a>( <span>string <var>$pattern</var></span>, <span>boolean <var>$positive</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>Adds rules that files content must match.
+You can use patterns regex or simple strings.
+Example :</p>
+
+<pre><span class="php-var">$finder</span>-&gt;contains(<span class="php-quote">'Hello World'</span>)</pre>
+
+<p>will produce same result as</p>
+
+<pre><span class="php-var">$finder</span>-&gt;name(<span class="php-quote">'/Hello
+World/i'</span>)</pre>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds rules that files content must match.
+You can use patterns regex or simple strings.
+Example :</p>
+
+<pre><span class="php-var">$finder</span>-&gt;contains(<span class="php-quote">'Hello World'</span>)</pre>
+
+<p>will produce same result as</p>
+
+<pre><span class="php-var">$finder</span>-&gt;name(<span class="php-quote">'/Hello
+World/i'</span>)</pre>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pattern</var></dt>
+					<dd></dd>
+					<dt><var>$positive</var></dt>
+					<dd>Default true and proceed as you expect. Set to false to add a rule that <u>does not</u> match.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="date" id="_date">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_date">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#432-445" title="Go to source code">date</a>( <span>string <var>$date</var></span> )</code>
+
+		<div class="description short">
+			<p>Adds tests for file dates (last modified).
+Remove the file if</p>
+
+<pre><span class="php-var">$current</span>-&gt;getCTime() &gt;= <span class="php-keyword2">strtotime</span>(<span class="php-var">$date</span>)</pre>
+
+<p>.
+The date must be something that strtotime() is able to parse.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds tests for file dates (last modified).
+Remove the file if</p>
+
+<pre><span class="php-var">$current</span>-&gt;getCTime() &gt;= <span class="php-keyword2">strtotime</span>(<span class="php-var">$date</span>)</pre>
+
+<p>.
+The date must be something that strtotime() is able to parse.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$date</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="size" id="_size">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_size">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#447-459" title="Go to source code">size</a>( <span>string <var>$size</var></span> )</code>
+
+		<div class="description short">
+			<p>Adds tests for file sizes in bytes.
+Remove the file if</p>
+
+<pre><span class="php-var">$current</span>-&gt;getSize() &gt;= <span class="php-var">$size</span></pre>
+
+<p>.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds tests for file sizes in bytes.
+Remove the file if</p>
+
+<pre><span class="php-var">$current</span>-&gt;getSize() &gt;= <span class="php-var">$size</span></pre>
+
+<p>.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$size</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="merge" id="_merge">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_merge">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#461-474" title="Go to source code">merge</a>( <span><code><a href="class-KeepItSimple.FileSystem.Finder.html">KeepItSimple\FileSystem\Finder</a></code>|Iterator|array <var>$iterator</var></span> )</code>
+
+		<div class="description short">
+			<p>Merge an other Finder or Iterator or simple array instance with the current Finder instance.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Merge an other Finder or Iterator or simple array instance with the current Finder instance.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$iterator</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<br>$this
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getIterator" id="_getIterator">
+
+		<td class="attributes"><code>
+			 public 
+
+			AppendIterator
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getIterator">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#476-537" title="Go to source code">getIterator</a>( )</code>
+
+		<div class="description short">
+			<p>Retrieve an external iterator.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Retrieve an external iterator.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					AppendIterator<br>An instance of an object implementing <b>Iterator</b>
+				</div>
+
+
+				<h4>Since</h4>
+				<div class="list">
+						5.0.0<br>
+				</div>
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://php.net/manual/en/iteratoraggregate.getiterator.php">http://php.net/manual/en/iteratoraggregate.getiterator.php</a><br>
+				</div>
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code>IteratorAggregate::getIterator()</code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="count" id="_count">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_count">#</a>
+		<code><a href="source-class-KeepItSimple.FileSystem.Finder.html#539-549" title="Go to source code">count</a>( )</code>
+
+		<div class="description short">
+			<p>Count elements of an object.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Count elements of an object.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer<br>The custom count as an integer.
+				</div>
+
+
+				<h4>Since</h4>
+				<div class="list">
+						5.1.0<br>
+				</div>
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://php.net/manual/en/countable.count.php">http://php.net/manual/en/countable.count.php</a><br>
+				</div>
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code>Countable::count()</code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="ONLY_FILES" id="ONLY_FILES">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-KeepItSimple.FileSystem.Finder.html#43" title="Go to source code"><b>ONLY_FILES</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ONLY_FILES" class="anchor">#</a>
+				<code><span class="php-num">1</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ONLY_DIRECTORIES" id="ONLY_DIRECTORIES">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-KeepItSimple.FileSystem.Finder.html#44" title="Go to source code"><b>ONLY_DIRECTORIES</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ONLY_DIRECTORIES" class="anchor">#</a>
+				<code><span class="php-num">2</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

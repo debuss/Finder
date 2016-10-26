@@ -1,3 +1,7 @@
+# PHPStorm idea folder
+.idea/
+index.php
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
