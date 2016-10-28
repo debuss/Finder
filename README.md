@@ -6,8 +6,8 @@ The main purpose was to create an alternative to the **Symfony Finder** because 
 Many files, folder, comparators, classes and exceptions. **That's too much...**
 
 As my Finder is a simpler version of the Symfony one, you won't find some features :
-* Custom exceptions _(only Exception)_
-* Some methods like _depth()_, _date()_, ...
+* Custom exceptions _(only Exception classes from SPL)_
+* Some methods like _depth()_, ...
 * Custom SplFileInfo, therefore these methods are not available :
     * getRelativePath()
     * getRelativePathname()

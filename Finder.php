@@ -24,6 +24,7 @@ use \CallbackFilterIterator;
 use \RecursiveCallbackFilterIterator;
 use \SplFileInfo;
 use \Exception;
+use \InvalidArgumentException;
 
 /**
  * Finder finds files and directories via a set of rules.
@@ -193,11 +194,19 @@ class Finder implements IteratorAggregate, Countable
     /**
      * Tells Finder to follow (or not) symbolic links.
      *
+     * @param bool $yes
+     * @return Finder
      * @uses FilesystemIterator::FOLLOW_SYMLINKS
      */
-    public function followLinks()
+    public function followLinks($yes = true)
     {
-        $this->flags |= FilesystemIterator::FOLLOW_SYMLINKS;
+        if ($yes) {
+            $this->flags |= FilesystemIterator::FOLLOW_SYMLINKS;
+        } else {
+            $this->flags &= ~FilesystemIterator::FOLLOW_SYMLINKS;
+        }
+
+        return $this;
     }
 
     /**
@@ -462,12 +471,22 @@ class Finder implements IteratorAggregate, Countable
      * Merge an other Finder or Iterator or simple array instance with the current Finder instance.
      *
      * @param Finder|Iterator|array $iterator
-     * @return $this
+     * @return Finder
+     * @throws InvalidArgumentException
      */
     public function merge($iterator)
     {
-        if ($iterator instanceof Finder) {
-            return $this;
+        if (is_array($iterator)) {
+            $this->in($iterator);
+        } elseif ($iterator instanceof Finder) {
+            $this->dirs = array_unique(array_merge($this->dirs, $iterator->dirs));
+        } elseif ($iterator instanceof Iterator) {
+            $this->in(iterator_to_array($iterator));
+        } else {
+            throw new InvalidArgumentException(sprintf(
+                'The argument given to %s is not an instance of Finder/Iterator or an array.',
+                __METHOD__
+            ));
         }
 
         return $this;
