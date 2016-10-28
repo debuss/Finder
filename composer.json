@@ -1,5 +1,6 @@
 {
   "name": "debuss-a/finder",
+  "type": "library",
   "description": "This Finder class finds files and directories via a set of rules, the same way as the Finder Component from Symfony but in a much simpler implementation.",
   "minimum-stability": "dev",
   "homepage": "https://github.com/debuss/Finder",
@@ -12,5 +13,10 @@
   ],
   "require": {
     "php": ">=5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "KeepItSimple\\FileSystem\\": ""
+    }
   }
 }
