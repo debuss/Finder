@@ -13,6 +13,14 @@ As my Finder is a simpler version of the Symfony one, you won't find some featur
     * getRelativePathname()
     * getContents()
 
+## Installation
+
+Via composer :
+
+```
+$ composer require debuss-a/finder "dev-master"
+```
+
 ## Usage
 
 #### List files and folders in a directory
