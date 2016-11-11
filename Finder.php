@@ -43,6 +43,7 @@ class Finder implements IteratorAggregate, Countable
 
     const ONLY_FILES = 1;
     const ONLY_DIRECTORIES = 2;
+
     /** @ignore */
     private $mode;
     /** @ignore */
@@ -61,6 +62,8 @@ class Finder implements IteratorAggregate, Countable
     private $flags;
     /** @ignore */
     private $vcs_list = ['.svn', '.cvs', '.idea', '.DS_Store', '.git', '.hg'];
+    /** @ignore */
+    private $depth = -1;
 
     /**
      * Finder constructor.
@@ -468,6 +471,19 @@ class Finder implements IteratorAggregate, Countable
     }
 
     /**
+     * Set the maximum allowed depth.
+     *
+     * @param int $depth
+     * @return $this
+     */
+    public function depth($depth)
+    {
+        $this->depth = max(-1, (int)$depth);
+
+        return $this;
+    }
+
+    /**
      * Merge an other Finder or Iterator or simple array instance with the current Finder instance.
      *
      * @param Finder|Iterator|array $iterator
@@ -523,6 +539,7 @@ class Finder implements IteratorAggregate, Countable
             );
 
             $directory = new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::SELF_FIRST);
+            $directory->setMaxDepth($this->depth);
 
             if ($this->ignore_unreadable_dirs) {
                 $directory = new CallbackFilterIterator($directory, function (SplFileInfo $current) {

@@ -3,15 +3,19 @@
 This Finder class finds files and directories via a set of rules, the same way as [the Finder Component from Symfony](https://symfony.com/doc/current/components/finder.html) but in a much simpler implementation.
 
 The main purpose was to create an alternative to the **Symfony Finder** because I find it too "heavy" for what it is suppose to do.
-Many files, folder, comparators, classes and exceptions. **That's too much...**
+Many files, folder, iterators, comparators, classes and exceptions (~20). **That's too much for a finder...**
+
+**Let's keep it simple !**
 
 As my Finder is a simpler version of the Symfony one, you won't find some features :
 * Custom exceptions _(only Exception classes from SPL)_
-* Some methods like _depth()_, ...
+* Some methods like _path()_, _notPath()_, ...
 * Custom SplFileInfo, therefore these methods are not available :
     * getRelativePath()
     * getRelativePathname()
     * getContents()
+
+_(It is still easy to implement them by your own...)_
 
 ## Installation
 
