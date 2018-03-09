@@ -12,19 +12,19 @@
 
 namespace KeepItSimple\FileSystem;
 
-use \Countable;
-use \Iterator;
-use \IteratorAggregate;
-use \ArrayIterator;
-use \AppendIterator;
-use \FilesystemIterator;
-use \RecursiveDirectoryIterator;
-use \RecursiveIteratorIterator;
-use \CallbackFilterIterator;
-use \RecursiveCallbackFilterIterator;
-use \SplFileInfo;
-use \Exception;
-use \InvalidArgumentException;
+use Countable;
+use Iterator;
+use IteratorAggregate;
+use ArrayIterator;
+use AppendIterator;
+use FilesystemIterator;
+use RecursiveArrayIterator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use CallbackFilterIterator;
+use RecursiveCallbackFilterIterator;
+use SplFileInfo;
+use InvalidArgumentException;
 
 /**
  * Finder finds files and directories via a set of rules.
@@ -42,26 +42,36 @@ class Finder implements IteratorAggregate, Countable
 {
 
     const ONLY_FILES = 1;
+
     const ONLY_DIRECTORIES = 2;
 
     /** @ignore */
     private $mode;
+
     /** @ignore */
     private $dirs = [];
+
     /** @ignore */
     private $filters = [];
+
     /** @ignore */
     private $sorts = [];
+
     /** @ignore */
     private $excluded_dirs = [];
+
     /** @ignore */
     private $ignore_vcs = true;
+
     /** @ignore */
     private $ignore_unreadable_dirs = true;
+
     /** @ignore */
     private $flags;
+
     /** @ignore */
     private $vcs_list = ['.svn', '.cvs', '.idea', '.DS_Store', '.git', '.hg'];
+
     /** @ignore */
     private $depth = -1;
 
@@ -114,24 +124,21 @@ class Finder implements IteratorAggregate, Countable
      *
      * @param string|array $directories
      * @return Finder
-     * @uses CallbackFilterIterator To comply with Finder::files() and Finder::Directories().
      */
     public function in($directories)
     {
-        $new_directories = [];
-
-        foreach ((array)$directories as $directory) {
+        $new_directories = array_map(function ($directory) {
             if (is_dir($directory)) {
-                $new_directories[] = $directory;
-            } else {
-                $new_directories = array_merge(
-                    $new_directories,
-                    glob($directory, (defined('GLOB_BRACE') ? GLOB_BRACE : 0)|GLOB_ONLYDIR)
-                );
+                return $directory;
             }
-        }
 
-        $this->dirs = array_unique(array_merge($this->dirs, (array)$new_directories));
+            return glob($directory, (defined('GLOB_BRACE') ? GLOB_BRACE : 0) | GLOB_ONLYDIR);
+        }, (array)$directories);
+
+        $this->dirs = array_unique(array_merge(
+            $this->dirs,
+            $this->flattenParameters($new_directories)
+        ));
 
         return $this;
     }
@@ -144,7 +151,10 @@ class Finder implements IteratorAggregate, Countable
      */
     public function exclude($directories)
     {
-        $this->excluded_dirs = array_merge($this->excluded_dirs, (array)$directories);
+        $this->excluded_dirs = array_merge(
+            $this->excluded_dirs,
+            (array)$directories
+        );
 
         return $this;
     }
@@ -360,19 +370,19 @@ class Finder implements IteratorAggregate, Countable
     }
 
     /**
-     * Adds rules that files must match.
+     * Adds rules that files name must match.
      * You can use patterns regex, globs or simple strings.
-     * Example : <code>$finder->name('*.php')</code> will produce same result as <code>$finder->name('/.php$/')</code>
+     * Example : <code>$finder->withName('*.php')</code> will produce same result as
+     * <code>$finder->name('/.php$/')</code>
      *
      * @param string $name
-     * @param bool $positive Default true and proceed as you expect. Set to false to add a rule that <u>does not</u> match.
      * @return Finder
      */
-    public function name($name, $positive = true)
+    public function withName($name)
     {
-        return $this->filter(function (SplFileInfo $current) use ($name, $positive) {
+        return $this->filter(function (SplFileInfo $current) use ($name) {
             if ($name == $current->getBasename()) {
-                return $positive ?: false;
+                return true;
             }
 
             $path_name = str_replace('\\', '/', $current->getPathname());
@@ -381,63 +391,190 @@ class Finder implements IteratorAggregate, Countable
             }, glob($current->getPath().'/'.$name));
 
             if (in_array($path_name, $glob)) {
-                return $positive ?: false;
+                return true;
             }
 
-            set_error_handler(function ($code, $message) {
-                throw new Exception($message, $code);
+            set_error_handler(function () {
+                return true;
             });
 
-            $regex_result = !$positive;
-            try {
-                if (preg_match($name, $current->getBasename())) {
-                    $regex_result = $positive ?: false;
-                }
-            } finally {
-                set_error_handler(null);
+            $preg_pattern = '/'.trim($name, '/#').'/';
 
-                return $regex_result;
+            if (preg_match($preg_pattern, $current->getBasename())) {
+                return true;
             }
+
+            set_error_handler(null);
+
+            return false;
+        });
+    }
+
+    /**
+     * Adds rules that files name must NOT match.
+     * You can use patterns regex, globs or simple strings.
+     * Example : <code>$finder->withoutName('*.php')</code> will produce same result as
+     * <code>$finder->name('/.php$/')</code>
+     *
+     * @param $name
+     * @return Finder
+     */
+    public function withoutName($name)
+    {
+        return $this->filter(function (SplFileInfo $current) use ($name) {
+            if ($name == $current->getBasename()) {
+                return false;
+            }
+
+            $path_name = str_replace('\\', '/', $current->getPathname());
+            $glob = array_map(function ($string) {
+                return str_replace('\\', '/', $string);
+            }, glob($current->getPath().'/'.$name));
+
+            if (in_array($path_name, $glob)) {
+                return false;
+            }
+
+            set_error_handler(function () {
+                return true;
+            });
+
+            $preg_pattern = '/'.trim($name, '/#').'/';
+
+            if (preg_match($preg_pattern, $current->getBasename())) {
+                return false;
+            }
+
+            set_error_handler(null);
+
+            return true;
         });
     }
 
     /**
      * Adds rules that files content must match.
      * You can use patterns regex or simple strings.
-     * Example : <code>$finder->contains('Hello World')</code> will produce same result as <code>$finder->name('/Hello
-     * World/i')</code>
+     * Example : <code>$finder->contains('Hello World')</code>
+     * will produce same result as
+     * <code>$finder->name('/Hello World/i')</code>
      *
      * @param string $pattern
-     * @param bool $positive Default true and proceed as you expect. Set to false to add a rule that <u>does not</u> match.
      * @return Finder
      */
-    public function contains($pattern, $positive = true)
+    public function contains($pattern)
     {
-        return $this->filter(function (SplFileInfo $current) use ($pattern, $positive) {
+        return $this->filter(function (SplFileInfo $current) use ($pattern) {
             if ($current->isDir() || $current->getSize() == 0) {
-                return false;
+                return true;
             }
 
             $content = $current->openFile()->fread($current->getSize());
 
-            if (strpos($content, $pattern) !== false) {
-                return $positive ?: false;
-            }
-
-            set_error_handler(function ($code, $message) {
-                throw new Exception($message, $code);
+            set_error_handler(function () {
+                return true;
             });
 
-            $regex_result = !$positive;
-            try {
-                if (preg_match($pattern, $content)) {
-                    $regex_result = $positive ?: false;
-                }
-            } finally {
-                set_error_handler(null);
+            $preg_pattern = '/'.trim($pattern, '/#').'/';
 
-                return $regex_result;
+            if (strpos($content, $pattern) !== false || preg_match($preg_pattern, $content)) {
+                return true;
             }
+
+            set_error_handler(null);
+
+            return false;
+        });
+    }
+
+    /**
+     * Adds rules that files content must NOT match.
+     * You can use patterns regex or simple strings.
+     * Example : <code>$finder->doesNotContain('Hello World')</code>
+     * will produce same result as
+     * <code>$finder->name('/Hello World/i')</code>
+     *
+     * @param $pattern
+     * @return Finder
+     */
+    public function doesNotContain($pattern)
+    {
+        return $this->filter(function (SplFileInfo $current) use ($pattern) {
+            if ($current->isDir() || $current->getSize() == 0) {
+                return true;
+            }
+
+            $content = $current->openFile()->fread($current->getSize());
+
+            set_error_handler(function () {
+                return true;
+            });
+
+            $preg_pattern = '/'.trim($pattern, '/#').'/';
+
+            if (strpos($content, $pattern) !== false || preg_match($preg_pattern, $content)) {
+                return false;
+            }
+
+            set_error_handler(null);
+
+            return true;
+        });
+    }
+
+    /**
+     * Restrict files and directories by path.
+     * You can use patterns regex or simple strings.
+     *
+     * @param string $path
+     * @return Finder
+     */
+    public function withPath($path)
+    {
+        return $this->filter(function (SplFileInfo $current) use ($path) {
+            set_error_handler(function () {
+                return true;
+            });
+
+            $path = str_replace('\\', '/', $path);
+            $realpath = str_replace('\\', '/', $current->getRealPath());
+            $preg_pattern = '/'.trim($path, '/#').'/';
+
+            if (strpos($realpath, $path) !== false || preg_match($preg_pattern, $realpath)) {
+                return true;
+            }
+
+            set_error_handler(null);
+
+            return false;
+        });
+    }
+
+    /**
+     * Exclude files and directories by path.
+     * You can use patterns regex or simple strings.
+     *
+     * @param string $path
+     * @return Finder
+     */
+    public function withoutPath($path)
+    {
+        return $this->filter(function (SplFileInfo $current) use ($path) {
+            set_error_handler(function () {
+                return true;
+            });
+
+            $path = str_replace('\\', '/', $path);
+            $realpath = str_replace('\\', '/', $current->getRealPath());
+            $pos = strpos($realpath, $path);
+            $preg_pattern = '/'.trim($path, '/#').'/';
+
+            if ($pos === 0 || $pos > 0 || preg_match($preg_pattern, $realpath)) {
+                return false;
+            }
+
+            set_error_handler(null);
+
+            return true;
         });
     }
 
@@ -512,7 +649,7 @@ class Finder implements IteratorAggregate, Countable
      * Retrieve an external iterator.
      *
      * @link http://php.net/manual/en/iteratoraggregate.getiterator.php
-     * @return AppendIterator An instance of an object implementing <b>Iterator</b>
+     * @return Iterator An instance of an object implementing <b>Iterator</b>
      * @since 5.0.0
      */
     public function getIterator()
@@ -526,11 +663,8 @@ class Finder implements IteratorAggregate, Countable
         foreach ($this->dirs as $dir) {
             $directory = new RecursiveCallbackFilterIterator(
                 new RecursiveDirectoryIterator($dir, $this->flags),
-                function (SplFileInfo $current, $key, RecursiveDirectoryIterator $iterator) {
+                function (SplFileInfo $current) {
                     if (in_array($current->getFilename(), $this->excluded_dirs)) {
-                        return false;
-                    } elseif (($iterator->getFlags() ^ RecursiveDirectoryIterator::SKIP_DOTS) === 0 &&
-                        $current->getFilename()[0] === '.') {
                         return false;
                     }
 
@@ -561,15 +695,15 @@ class Finder implements IteratorAggregate, Countable
                 $directory = new CallbackFilterIterator($directory, $filter);
             }
 
-            foreach ($this->sorts as $sort) {
-                $directory = new ArrayIterator(iterator_to_array($directory));
-                $directory->uasort($sort);
-            }
-
-            $iterator->append(new ArrayIterator(iterator_to_array($directory)));
+            $iterator->append($directory);
         }
 
-        return $iterator;
+        $files = iterator_to_array($iterator);
+        foreach ($this->sorts as $sort) {
+            uasort($files, $sort);
+        }
+
+        return new ArrayIterator($files);
     }
 
     /**
@@ -582,5 +716,17 @@ class Finder implements IteratorAggregate, Countable
     public function count()
     {
         return (int)iterator_count($this->getIterator());
+    }
+
+    /**
+     * @param ...mixed
+     * @return array Flatten parameters into a single array.
+     */
+    private function flattenParameters()
+    {
+        return iterator_to_array(
+            new RecursiveIteratorIterator(new RecursiveArrayIterator(func_get_args())),
+            false
+        );
     }
 }

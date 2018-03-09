@@ -9,7 +9,6 @@ Many files, folder, iterators, comparators, classes and exceptions (~20). **That
 
 As my Finder is a simpler version of the Symfony one, you won't find some features :
 * Custom exceptions _(only Exception classes from SPL)_
-* Some methods like _path()_, _notPath()_, ...
 * Custom SplFileInfo, therefore these methods are not available :
     * getRelativePath()
     * getRelativePathname()
@@ -127,5 +126,5 @@ foreach ($finder as $file) {
 
 ## Complete documentation
 
-The complete documentation is provided in the documentation folder.  
+The complete documentation is provided in the _documentation_ folder.  
 Generated with [APIGen](http://www.apigen.org/).
